@@ -191,6 +191,26 @@ var Time = function(initVal)
 			return diferenca.format(formato);
 		return diferenca;
 	}
+
+	this.fromDate = function(data){
+		if (data instanceof Date){
+			this.set(data.getHours() + ':' + data.getMinutes() + ':' + data.getSeconds() + ':' + data.getMilliseconds());
+		} else {
+			throw "Data inválida"
+		}
+	}
+
+	this.fromNow = function(formato){
+		var data = new Date(),
+			now = new Time(data.getHours() + ':' + data.getMinutes() + ':' + data.getSeconds() + ':' + data.getMilliseconds());
+		return this.diff(now, formato);
+	}
+
+	this.toNow = function(formato){
+		var data = new Date(),
+			now = new Time(data.getHours() + ':' + data.getMinutes() + ':' + data.getSeconds() + ':' + data.getMilliseconds());
+		return now.diff(this, formato);
+	}
 	
 	this.modify = function(valor){
 		var 
@@ -245,6 +265,24 @@ var Time = function(initVal)
 	if (initVal) {
 		this.init(initVal);
 	}
+}
+
+Time.create = function(hora) {
+	return new this(hora);
+}
+
+Time.fromDate = function(data){
+	if (data instanceof Date){
+		var inst = new this(data.getHours() + ':' + data.getMinutes() + ':' + data.getSeconds() + ':' + data.getMilliseconds());
+		return inst;
+	} else {
+		throw "Data inválida"
+	}
+}
+
+Time.now = function(){
+	data = new Date();
+	return this.fromDate(data);
 }
 
 function digit(n, d){

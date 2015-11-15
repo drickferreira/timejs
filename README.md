@@ -5,8 +5,8 @@
 <h2>Básica</h2>
 
 Criar uma instância de Time() com valor 0<br/>
-<code>var t = new Time();
-Time {timestamp: 0, value: "00:00:00:000"}</code>
+<code>var t = new Time();</code>
+<code>Time {timestamp: 0, value: "00:00:00:000"}</code>
 
 Criar uma instância com hora<br/>
 <code>var t = new Time('12:02:05:100'); Time {timestamp: 43325100, value: "+12:02:05:100"}</code>
@@ -57,13 +57,29 @@ modify('+1 hour'); //13:00<br/>
 modify('-15 minutes') //12:45<br/>
 modify('60 seconds') //12:46<br/>
 
-Adiciona o horário atual;<br/>
+Adiciona o valor ao Time atual;<br/>
 <code>addHour(h);</code><br/>
 <code>addMinute(m);</code><br/>
 <code>addSecond(s);</code><br/>
 <code>addMilisecond(ms);</code><br/>
 Ex: Hora = 12:00<br/>
 addHour(5); //17:00<br/>
+
+
+Extrai a hora de uma data;<br>
+<code>fromDate(data);</code><br>
+Ex: var d = new Date();<br>
+var t = new Time;<br>
+t.fromDate(d) //Pega o horário de d;<br>
+
+Diferença da Hora atual do sistema;<br>
+<code>fromNow();</code> //a partir de agora pra uma hora futura;<br>
+<code>toNow();</code> //de uma hora passada até agora;<br>
+
+Novos construtores;<br>
+<code>Time.create(hora);</code> //Cria uma hora (parametro hora opcional);<br>
+<code>Time.now();</code> //Cria uma nova hora com a hora atual;<br>
+<code>Time.fromDate(data);</code> //Cria uma nova hora de uma data;<br>
 
 <code>log()</code><br/>
 Método utilizado apenas durante o desenvolvimento, deve ser descontinuado na versão final<br/>
