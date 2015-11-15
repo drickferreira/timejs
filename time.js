@@ -141,18 +141,19 @@ var Time = function(initVal)
 	}
 
 	this.getAllMinutes = function(){
+	this.toMinutes = function(){
 		var tmstp = this.timestamp;
 		m = tmstp.div(minuto);
 		return m;
 	}
 
-	this.getAllSeconds = function(){
+	this.toSeconds = function(){
 		var tmstp = this.timestamp;
 		s = tmstp.div(segundo);
 		return s;
 	}
 	
-	this.getAllMiliseconds = function(){
+	this.toMiliseconds = function(){
 		return this.timestamp;
 	}
 	
@@ -183,8 +184,13 @@ var Time = function(initVal)
 		}
 	}
 	
-	this.diff = function(hora){
+	this.diff = function(hora, formato){
 		var diferenca = new Time();
+		diferenca.addMiliseconds(this.timestamp);
+		diferenca.sub(hora);
+		if (formato)
+			return diferenca.format(formato);
+		return diferenca;
 	}
 	
 	this.modify = function(valor){
