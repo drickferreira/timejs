@@ -140,7 +140,6 @@ var Time = function(initVal)
 		return digit(tmstp, n);
 	}
 
-	this.getAllMinutes = function(){
 	this.toMinutes = function(){
 		var tmstp = this.timestamp;
 		m = tmstp.div(minuto);
